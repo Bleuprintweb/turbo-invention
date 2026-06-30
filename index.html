@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueprint Web | ابتكار المنصات والمواقع الاحترافية</title>
+    
+    <!-- ربط الصورة كأيقونة للموقع Favicon لمنع ظهور علامة الكرة الأرضية في جوجل -->
+    <link rel="icon" type="image/png" href="Gemini_Generated_Image_bpk2n3bpk2n3bpk2.png">
+    <link rel="apple-touch-icon" href="Gemini_Generated_Image_bpk2n3bpk2n3bpk2.png">
+    
+    <!-- إعدادات محركات البحث وجوجل وواتساب لعرض صورتك الرائعة عند مشاركة الرابط -->
+    <meta property="og:title" content="Blueprint Web | ابتكار المنصات والمواقع الاحترافية">
+    <meta property="og:description" content="نحول أفكارك إلى واقع رقمي مبهر. واجهات مستخدم ذكية وتصميمات حصرية من م. تادرس ياسر وم. توماس جمال.">
+    <meta property="og:image" content="Gemini_Generated_Image_bpk2n3bpk2n3bpk2.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:image" content="Gemini_Generated_Image_bpk2n3bpk2n3bpk2.png">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Orbitron:wght@600;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* نظام الألوان المتغير لدعم الوضعين الليلي والنهاري */
+        :root {
+            /* الوضع الليلي الافتراضي Default Dark Mode */
+            --bg-dark: #030712;
+            --bg-card: rgba(15, 23, 42, 0.45);
+            --neon-blue: #00f0ff;
+            --neon-purple: #d946ef;
+            --neon-green: #10b981;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.07);
+            --header-bg: rgba(3, 7, 18, 0.75);
+            --input-bg: rgba(3, 7, 18, 0.6);
+            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="light"] {
+            /* الوضع النهاري المضيء Light Mode */
+            --bg-dark: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --neon-blue: #0284c7;
+            --neon-purple: #c026d3;
+            --neon-green: #16a34a;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --glass-border: rgba(15, 23, 42, 0.08);
+            --header-bg: rgba(248, 250, 252, 0.85);
+            --input-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* زراير تبديل الثيم والأيقونة */
+        .theme-toggle-btn {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            margin-right: 15px;
+        }
+        .theme-toggle-btn:hover {
+            color: var(--neon-blue);
+            border-color: var(--neon-blue);
+        }
+
+        /* Header Navigation */
+        header {
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--header-bg);
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--neon-blue);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-right: 35px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: var(--neon-blue);
+        }
+
+        .admin-btn {
+            background: transparent;
+            border: 1px solid var(--neon-purple);
+            color: var(--text-main);
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .admin-btn:hover {
+            background: var(--neon-purple);
+            color: #fff;
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 90vh;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            max-width: 650px;
+        }
+
+        .hero-content h1 {
+            font-size: 38px;
+            line-height: 1.5;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+
+        .highlight-gradient {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content .eng-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--neon-blue);
+            margin: 15px 0;
+            display: block;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .hero-image-container {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cyber-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 20px 50px rgba(0, 240, 255, 0.05);
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .dev-team {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .dev-member {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dev-member i { color: var(--neon-purple); }
+
+        /* الشرح التفصيلي للعملاء */
+        .features {
+            padding: 100px 8%;
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 55px;
+        }
+
+        .feature-box {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .feature-box h3 {
+            font-size: 20px;
+            margin: 15px 0 10px;
+            color: var(--text-main);
+        }
+
+        .feature-box p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(217, 70, 239, 0.1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            color: var(--neon-purple);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle-text {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            font-size: 16px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+        }
+
+        /* */
+        .project-img-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #090f1d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* الخلفية المبتكرة لحل مشكلة المربعات البيضاء وعرض أسماء الملفات */
+        .project-img-wrapper::before {
+            content: "BLUEPRINT WEB";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, #101c38 0%, #050a14 100%);
+            color: var(--neon-blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 2px;
+            opacity: 0.95;
+            z-index: 1;
+        }
+
+        .project-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            background: transparent;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        /* Booking Section */
+        .booking {
+            padding: 100px 8%;
+        }
+
+        .booking-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 45px;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            background: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 16px;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            border: none;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .submit-btn:hover {
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 50px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--neon-blue);
+            border-color: var(--neon-blue);
+        }
+
+        /* Modals Control Dashboard */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(12px);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: var(--bg-dark);
+            border: 1px solid var(--neon-blue);
+            padding: 35px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 1000px;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.15);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .close-modal:hover {
+            color: #ef4444;
+            transform: rotate(90deg);
+        }
+
+        /* لوحة التحكم الجانبية */
+        .dashboard-container {
+            display: none;
+            grid-template-columns: 240px 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .dashboard-sidebar {
+            border-left: 1px solid var(--glass-border);
+            padding-left: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sidebar-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition-smooth);
+        }
+
+        .sidebar-btn.active, .sidebar-btn:hover {
+            background: rgba(0, 240, 255, 0.08);
+            color: var(--neon-blue);
+            border-color: rgba(0, 240, 255, 0.2);
+        }
+
+        .dashboard-tab-content {
+            display: none;
+        }
+
+        .dashboard-tab-content.active {
+            display: block;
+        }
+
+        /* جدول الحجوزات المستلمة */
+        .bookings-table-wrapper {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .bookings-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+        }
+
+        .bookings-table th {
+            background: rgba(3, 7, 18, 0.8);
+            color: var(--text-main);
+            padding: 14px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .bookings-table td {
+            padding: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .bookings-table tr:hover {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition-smooth);
+            padding: 4px;
+        }
+
+        .action-btn.whatsapp { color: var(--neon-green); }
+        .action-btn.delete { color: #f87171; }
+        .action-btn:hover { transform: scale(1.2); }
+
+        /* مفتاح تفعيل/تعطيل الأسعار */
+        .switch-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .switch-label {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: .4s;
+            border-radius: 34px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px; width: 18px;
+            left: 3px; bottom: 3px;
+            background-color: var(--text-main);
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--neon-green);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        /* نافذة الإشعارات المخصصة (Toast) لتجنب الـ alert */
+        .custom-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-right: 4px solid var(--neon-blue);
+            color: var(--text-main);
+            padding: 14px 24px;
+            border-radius: 8px;
+            z-index: 3000;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .custom-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .custom-toast.error { border-right-color: #ef4444; }
+
+        @media (max-width: 992px) {
+            .hero { flex-direction: column; text-align: center; }
+            .hero-content .eng-title { text-align: center; }
+            .hero-image-container { width: 100%; }
+            .dashboard-container { grid-template-columns: 1fr; }
+            .dashboard-sidebar { border-left: none; padding-left: 0; flex-direction: row; overflow-x: auto; padding-bottom: 10px; }
+            .sidebar-btn { white-space: nowrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">BLUEPRINT <span>WEB</span></div>
+        <div class="nav-container">
+            <nav>
+                <a href="#home">الرئيسية</a>
+                <a href="#features">كيف نعمل</a>
+                <a href="#portfolio">مشاريعنا</a>
+                <a href="#booking">طلب موقع</a>
+            </nav>
+            <!-- زر تبديل الوضع الليلي / النهاري الذكي -->
+            <button class="theme-toggle-btn" onclick="toggleTheme()" title="تبديل الوضع اللليلي/النهاري">
+                <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
+            <button class="admin-btn" onclick="openAdminModal()"><i class="fa-solid fa-screwdriver-wrench"></i> الإدارة</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 id="hero-ar-text">نحول أفكارك إلى <span class="highlight-gradient">واقع رقمي مبهر</span>.<br>واجهات مستخدم ذكية، تصميمات حصرية، أداء فائق وسرعة مدهشة.</h1>
+            <span class="eng-title" id="hero-en-title">PROFESSIONAL Website Development</span>
+            <p id="hero-en-text">WE TRANSFORM YOUR VISION INTO STUNNING DIGITAL REALITY. Exclusive Designs, Intuitive UI, Exceptional Performance.</p>
+            <a href="#booking" style="text-decoration:none;">
+                <button class="submit-btn" style="background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple)); max-width: 280px;">ابدأ مشروعك الآن</button>
+            </a>
+        </div>
+        <div class="hero-image-container">
+            <div class="cyber-card">
+                <span class="tech-badge"><i class="fa-solid fa-bolt"></i> استوديو برمجة وتصميم</span>
+                <h2 style="font-family:'Orbitron'; font-size: 28px; margin-bottom: 15px; letter-spacing: 1px;">WEB DESIGN</h2>
+                <p style="font-size: 15px; color: var(--text-muted); line-height: 1.6;">تصاميم ذكية ومبتكرة، نتائج تسويقية مذهلة، حضور رقمي قوي يُضاعف مبيعاتك وأرباحك.</p>
+                
+                <div class="dev-team" id="dev-team-display">
+                    <div class="dev-member" id="dev-m1"><i class="fa-solid fa-terminal"></i> م. تادرس ياسر | TADROS YASSER</div>
+                    <div class="dev-member" id="dev-m2"><i class="fa-solid fa-layer-group"></i> م. توماس جمال | TOMAS GAMAL</div>
+                    <div id="contact-phone-display" style="color: var(--neon-green); font-size: 18px; font-weight: bold; margin-top: 15px; display: flex; align-items: center; gap: 8px; direction: ltr; justify-content: flex-end;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 22px;"></i> <span id="phone-number-val">01229978205</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section style="padding: 0 8% 60px; text-align: center;">
+        <img src="logo-banner.jpg" alt="Blueprint Web" style="max-width: 900px; width: 100%; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,240,255,0.1);">
+    </section>
+
+    <!-- قسم الشرح التفصيلي للعميل لبناء الثقة واقناعه -->
+    <section class="features" id="features">
+        <h2 class="section-title">كيف نضمن <span>نجاح مشروعك؟</span></h2>
+        <p class="section-subtitle-text" style="max-width: 700px; margin: 0 auto; text-align: center;">نحن لا نكتب أكواداً فحسب؛ بل نصنع أدوات تسويقية متكاملة تجذب الزوار وتحولهم لعملاء دائمين مع لوحة تحكم خاصة ومحمية تمنحك السيطرة المطلقة.</p>
+        <div class="features-grid">
+            <div class="feature-box">
+                <div class="feature-icon"><i class="fa-solid fa-comments"></i></div>
+                <h3>1. الاستشارة الفنية</h3>
+                <p>ندرس طبيعة عملك بدقة، ونحدد الهوية البصرية المناسبة والجمهور المستهدف لنصنع موقعاً يمثلك بااحترافية.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+                <h3>2. تصميم حصرى واحترافي</h3>
+                <p>نبتكر واجهات UI/UX عصرية ومريحة للعين، مدمج بها خيار الوضع الليلي والنهاري لتوفير أفضل تصفح لعملائك.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>3. برمجة مخصصة مرنة</h3>
+                <p>نبرمج موقعك ليكون فائق السرعة ومتوافقاً مع الهواتف، ونزودك بلوحة تحكم لتعديل المحتوى بنفسك بكل أمان.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>4. ربط الحجز والتسويق</h3>
+                <p>نربط موقعك بنظام حجز إلكتروني ذكي ينقل الرسائل مباشرة إلى واتساب الخاص بك لتسهيل الاتفاق وإتمام الصفقات فوراً.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <h2 class="section-title">شاهد قوة <span>مشاريعنا السابقة</span></h2>
+        <p class="section-subtitle-text">تحديث فوري وحي من السحابة لجميع مشاريعنا المنجزة.</p>
+        <div class="projects-grid" id="portfolio-projects-container">
+            <!-- Projects injected dynamically -->
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <h2 class="section-title">انقل عملك للمستقبل | <span>احجز الآن</span></h2>
+        <div class="booking-container">
+            <!-- تم إسناد دالة الإرسال لحدث handleFormSubmission لمنع أي تعطل -->
+            <form id="bookingForm" onsubmit="window.handleFormSubmission(event)">
+                <div class="form-group">
+                    <label>الاسم الكريم أو اسم المؤسسة / العيادة:</label>
+                    <input type="text" id="clientName" required placeholder="مثال: عيادة الأمل أو د. رامي">
+                </div>
+                <div class="form-group">
+                    <label>رقم هاتف الاتصال / الواتساب:</label>
+                    <input type="tel" id="clientPhone" required placeholder="مثال: 012xxxxxxxx" style="direction: ltr; text-align: right;">
+                </div>
+                <div class="form-group">
+                    <label>ما هو نوع الموقع الإلكتروني الذي تتمناه؟</label>
+                    <select id="projectType" required>
+                        <option value="موقع طبي / عيادة متكاملة مع الحجز">موقع طبي / عيادة متكاملة مع الحجز</option>
+                        <option value="منصة تعليمية / كورسات ذكية">منصة تعليمية / كورسات ذكية</option>
+                        <option value="بورتفوليو / معرض أعمال احترافي">بورتفوليو / معرض أعمال احترافي</option>
+                        <option value="متجر إلكتروني ذكي لزيادة المبيعات">متجر إلكتروني ذكي لزيادة المبيعات</option>
+                        <option value="برمجية خاصة وموقع مخصص">برمجية خاصة وموقع مخصص</option>
+                    </select>
+                </div>
+                <!-- حقل السعر الذي يتم تفعيله أو إلغاء تفعيله سحابياً من لوحة التحكم -->
+                <div class="form-group" id="budget-input-group">
+                    <label>الميزانية التقريبية التي تراها مناسبة لمشروعك (بالجنيه):</label>
+                    <input type="number" id="clientBudget" placeholder="اكتب الميزانية المناسبة لك هنا...">
+                </div>
+                <div class="form-group">
+                    <label>اشرح لنا فكرتك أو المزايا التي تريدها (اختياري):</label>
+                    <textarea id="projectDetails" rows="4" placeholder="مثال: أريد لوحة تحكم لتعديل الخدمات، نظام حجز يرسل للواتساب..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 22px;"></i> تأكيد الطلب والانتقال الفوري للواتساب
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <p style="font-size: 16px;">© 2026 <strong id="footer-logo-text">Blueprint Web</strong>. جميع الحقوق محفوظة لمهندسي البرمجيات.</p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px;" id="footer-devs-text">شراكة برمجية بين: م. تادرس ياسر & م. توماس جمال</p>
+        </div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1BqMNFuksn/" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@tadres_alkomos?_r=1&_t=ZS-97dpwjZgsvl" target="_blank" title="تيك توك م. تادرس"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.tiktok.com/@eng.tomas7?_r=1&_t=ZS-97dpz6K1oCi" target="_blank" title="تيك توك م. توماس"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+    </footer>
+
+    <!-- Admin Panel Control Modal -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAdminModal()">&times;</span>
+            
+            <!-- Login View -->
+            <div id="login-view">
+                <h3 style="margin-bottom: 25px; text-align: center; font-size: 22px; color: var(--neon-blue);"><i class="fa-solid fa-shield-halved"></i> نظام الإدارة السحابي الآمن</h3>
+                <div class="form-group">
+                    <label>اسم المستخدم الإداري:</label>
+                    <input type="text" id="adminUser" placeholder="Username" style="direction: ltr;">
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور المشفرة:</label>
+                    <input type="password" id="adminPass" placeholder="Password" style="direction: ltr;">
+                </div>
+                <button class="submit-btn" style="background: linear-gradient(135deg, var(--neon-purple), #a855f7);" onclick="handleLogin()">تحقق ودخول</button>
+            </div>
+
+            <!-- Dashboard Editing View (Split Layout) -->
+            <div id="dashboard-view" class="dashboard-container">
+                <!-- القائمة الجانبية للوحة التحكم -->
+                <div class="dashboard-sidebar">
+                    <button class="sidebar-btn active" onclick="switchDashboardTab('tab-bookings')">
+                        <i class="fa-solid fa-clipboard-list"></i> الحجوزات الواردة (<span id="booking-badge-count">0</span>)
+                    </button>
+                    <button class="sidebar-btn" onclick="switchDashboardTab('tab-system')">
+                        <i class="fa-solid fa-sliders"></i> تعديل نصوص الموقع
+                    </button>
+                    <button class="sidebar-btn" onclick="switchDashboardTab('tab-projects')">
+                        <i class="fa-solid fa-images"></i> إدارة المشاريع (<span id="project-badge-count">0</span>)
+                    </button>
+                    <button class="sidebar-btn" onclick="switchDashboardTab('tab-devs')">
+                        <i class="fa-solid fa-user-gear"></i> إدارة المطورين والاتصال
+                    </button>
+                    <button class="sidebar-btn" onclick="switchDashboardTab('tab-security')">
+                        <i class="fa-solid fa-key"></i> الأمان وكلمة المرور
+                    </button>
+                    <button class="sidebar-btn" onclick="handleLogout()" style="color: #ef4444; margin-top: auto; border-color: rgba(239, 68, 68, 0.2);">
+                        <i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج
+                    </button>
+                </div>
+
+                <!-- مساحة العرض الرئيسية للتبويبات -->
+                <div class="dashboard-main-content" style="max-height: 70vh; overflow-y: auto; padding-left: 10px;">
+                    
+                    <!-- التبويب الأول: قائمة الحجوزات السحابية حية ومباشرة -->
+                    <div id="tab-bookings" class="dashboard-tab-content active">
+                        <h3 style="color: var(--neon-blue); margin-bottom: 10px;"><i class="fa-solid fa-clipboard-list"></i> سجل الحجوزات السحابية الحية</h3>
+                        <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 15px;">استعرض وحلل طلبات عملائك الواردة من السحابة في الوقت الفعلي مع إمكانية المراسلة أو الحذف الفوري.</p>
+                        
+                        <div class="bookings-table-wrapper">
+                            <table class="bookings-table">
+                                <thead>
+                                    <tr>
+                                        <th>الاسم</th>
+                                        <th>الهاتف</th>
+                                        <th>نوع الموقع</th>
+                                        <th>الميزانية</th>
+                                        <th>التفاصيل</th>
+                                        <th>إجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bookings-table-body">
+                                    <!-- سيتم حقن الصفوف سحابياً أو محلياً -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- التبويب الثاني: تعديل نصوص الموقع السحابي -->
+                    <div id="tab-system" class="dashboard-tab-content">
+                        <h3 style="color: var(--neon-blue); margin-bottom: 20px;"><i class="fa-solid fa-sliders"></i> تعديل نصوص الواجهة والأسعار</h3>
+                        
+                        <!-- مفتاح تفعيل/تعطيل حقل الأسعار -->
+                        <div class="switch-container">
+                            <label class="switch">
+                                <input type="checkbox" id="price-field-toggle" onchange="togglePriceFieldCloud()">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="switch-label">تفعيل حقل الأسعار والميزانية للزوار في نموذج الطلب</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>تعديل العنوان الرئيسي (العربي):</label>
+                            <textarea id="editArText" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>تعديل العنوان الإنجليزي (Subtitle):</label>
+                            <input type="text" id="editEnTitle">
+                        </div>
+                        <div class="form-group">
+                            <label>تعديل النص التسويقي (الإنجليزي):</label>
+                            <textarea id="editEnText" rows="3"></textarea>
+                        </div>
+                        <button class="submit-btn" style="background: var(--neon-purple);" onclick="saveMainContentEdits()">تحديث الواجهة فورياً</button>
+                    </div>
+
+                    <!-- التبويب الثالث: إدارة المشاريع وإضافة مشاريع جديدة -->
+                    <div id="tab-projects" class="dashboard-tab-content">
+                        <h3 style="color: var(--neon-blue); margin-bottom: 15px;"><i class="fa-solid fa-images"></i> إدارة المشاريع ونماذج الأعمال</h3>
+                        <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 20px;">قم بإضافة مشاريع جديدة أو حذفها من السحابة مباشرة مع تحديد اختيار صورة مخصصة.</p>
+                        
+                        <!-- نموذج إضافة مشروع جديد -->
+                        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); padding: 20px; border-radius: 12px; margin-bottom: 25px;">
+                            <h4 style="color: var(--neon-blue); margin-bottom: 15px; font-size: 16px;"><i class="fa-solid fa-plus"></i> إضافة مشروع جديد</h4>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <div class="form-group" style="grid-column: span 2;">
+                                    <label>عنوان المشروع:</label>
+                                    <input type="text" id="newProjTitle" placeholder="مثال: منصة برمجية جديدة">
+                                </div>
+                                <div class="form-group" style="grid-column: span 2;">
+                                    <label>وصف المشروع بالتفصيل:</label>
+                                    <textarea id="newProjDesc" rows="2" placeholder="اكتب تفاصيل ومزايا هذا المشروع..."></textarea>
+                                </div>
+                                <!-- تم تعديل هذا الحقل ليقوم بالتحميل المباشر من جهاز المستخدم بدلاً من كتابة الاسم -->
+                                <div class="form-group">
+                                    <label>تحميل صورة المشروع من جهازك:</label>
+                                    <input type="file" id="newProjImage" accept="image/*" style="direction: ltr; padding: 10px; background: var(--input-bg); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-main); width: 100%;">
+                                </div>
+                                <div class="form-group">
+                                    <label>المطور المشرف أو تصنيف المشروع:</label>
+                                    <input type="text" id="newProjTag" placeholder="مثال: م. تادرس ياسر">
+                                </div>
+                            </div>
+                            <button class="submit-btn" style="background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple)); margin-top: 15px;" onclick="addNewProjectCloud()">
+                                <i class="fa-solid fa-circle-plus"></i> إضافة وحفظ المشروع الآن
+                            </button>
+                        </div>
+
+                        <!-- قائمة المشاريع الحالية للتعديل أو الحذف -->
+                        <h4 style="color: var(--neon-blue); margin-bottom: 15px; font-size: 16px;"><i class="fa-solid fa-list-check"></i> قائمة المشاريع المسجلة</h4>
+                        <div class="bookings-table-wrapper">
+                            <table class="bookings-table">
+                                <thead>
+                                    <tr>
+                                        <th>عنوان المشروع</th>
+                                        <th>ملف الصورة</th>
+                                        <th>المشرف</th>
+                                        <th>إجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="projects-table-body">
+                                    <!-- Dynamic elements injected here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- التبويب الرابع: إدارة المطورين ونقطة الاتصال -->
+                    <div id="tab-devs" class="dashboard-tab-content">
+                        <h3 style="color: var(--neon-blue); margin-bottom: 20px;"><i class="fa-solid fa-user-gear"></i> إدارة المطورين ونظام الاتصال السحابي</h3>
+                        <div class="form-group">
+                            <label>المطور الأول (م. تادرس ياسر):</label>
+                            <input type="text" id="editDev1Name">
+                        </div>
+                        <div class="form-group">
+                            <label>المطور الثاني (م. توماس جمال):</label>
+                            <input type="text" id="editDev2Name">
+                        </div>
+                        <div class="form-group">
+                            <label>رقم هاتف استقبال الحجوزات والواتساب (بالصيغة الدولية وبدون أصفار أو علامة +):</label>
+                            <input type="text" id="editWhatsappNum" style="direction: ltr; text-align: right;">
+                        </div>
+                        <button class="submit-btn" style="background: var(--neon-green);" onclick="saveDevsConfigCloud()">حفظ بيانات المطورين سحابياً</button>
+                    </div>
+
+                    <!-- التبويب الخامس: الأمان وتغيير بيانات الدخول للوحة المطورين -->
+                    <div id="tab-security" class="dashboard-tab-content">
+                        <h3 style="color: var(--neon-blue); margin-bottom: 20px;"><i class="fa-solid fa-key"></i> إدارة بيانات الدخول للوحة التحكم</h3>
+                        <div class="form-group">
+                            <label>اسم المستخدم الجديد للوحة المطورين:</label>
+                            <input type="text" id="editAdminUser" style="direction: ltr;">
+                        </div>
+                        <div class="form-group">
+                            <label>كلمة المرور الجديدة للوحة المطورين:</label>
+                            <input type="password" id="editAdminPass" style="direction: ltr;">
+                        </div>
+                        <button class="submit-btn" style="background: #ef4444;" onclick="saveAdminCredentialsCloud()">تحديث كلمة السر واسم الدخول سحابياً</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة الإشعارات المخصصة والآمنة -->
+    <div class="custom-toast" id="customToast">
+        <i id="toastIcon" class="fa-solid"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- كود إعداد وإدارة قاعدة البيانات السحابية Firebase & Local Fallback الموثوق -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, collection, addDoc, onSnapshot, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+
+        // المتغيرات السحابية والافتراضية للمنصة
+        const defaultAppId = 'blueprint-web-studio-2026';
+        const appId = typeof __app_id !== 'undefined' ? __app_id : defaultAppId;
+        window.appId = appId;
+        
+        let firebaseConfig = null;
+        let db = null;
+        let auth = null;
+        let currentUser = null;
+
+        // تهيئة الإعدادات الافتراضية والاحتياطية للموقع لضمان عدم حدوث أي Freeze
+        window.siteConfig = {
+            whatsappNumber: "201229978205",
+            heroArText: "نحول أفكارك إلى <span class=\"highlight-gradient\">واقع رقمي مبهر</span>.<br>واجهات مستخدم ذكية، تصميمات حصرية، أداء فائق وسرعة مدهشة.",
+            heroEnTitle: "PROFESSIONAL Website Development",
+            heroEnText: "WE TRANSFORM YOUR VISION INTO STUNNING DIGITAL REALITY. Exclusive Designs, Intuitive UI, Exceptional Performance.",
+            dev1Name: "م. تادرس ياسر | TADROS YASSER",
+            dev2Name: "م. توماس جمال | TOMAS GAMAL",
+            priceFieldEnabled: true,
+            adminUser: "blueprint_admin",
+            adminPass: "web_2026_secured",
+            projects: [
+                {
+                    id: "1",
+                    title: "منصة المهندس تادرس ياسر",
+                    desc: "منصة تعليمية فاخرة لـ 25 لغة برمجة بشرح موسوعي حقيقي، تدعم الوضع الليلي والنهاري والبحث الفوري المتقدم.",
+                    imageName: "لقطة الشاشة 2026-06-28 011028.jpg",
+                    tag: "HTML5 / CSS3 / Javascript"
+                },
+                {
+                    id: "2",
+                    title: "منصة Courses Hub التعليمية",
+                    desc: "موقع أكاديمي منظم لعرض السكاشن والمحاضرات والامتحانات التفاعلية لمواد الـ Microprocessors وشبكات اتصالات البيانات.",
+                    imageName: "لقطة الشاشة 2026-06-28 011144.png",
+                    tag: "React / Node.js"
+                },
+                {
+                    id: "3",
+                    title: "مركز سان ستيفانو الطبي والغذائي",
+                    desc: "موقع طبي متكامل للدكتور استيفن انسي لطفي يعرض الخدمات المتاحة، ومزود بنظام حجز مواعيد مرن لراحة المرضى.",
+                    imageName: "لقطة الشاشة 2026-06-28 011233.jpg",
+                    tag: "React / Django Backend"
+                },
+                {
+                    id: "4",
+                    title: "عيادة لؤلؤة الابتسامة لطب الأسنان",
+                    desc: "واجهة رقمية متقدمة لعيادة د. أحمد كمال، تشمل محاكاة فورية نشطة وخريطة الأسنان التفاعلية مع نظام حجز مرن وحفظ الروابط.",
+                    imageName: "لقطة الشاشة 2026-06-28 011433.jpg",
+                    tag: "Vue.js / Firebase"
+                },
+                {
+                    id: "5",
+                    title: "عيادة الشفاء للخدمات البيطرية",
+                    desc: "منصة شاملة لرعاية الثروة الحيوانية والداجنة بمحافظة سوهاج، تتيح للمربين حجز الكشوفات ومتابعة المزارع والتواصل الفوري.",
+                    imageName: "لقطة الشاشة 2026-06-28 011554.png2.jpg",
+                    tag: "HTML5 / PHP / MySQL"
+                },
+                {
+                    id: "6",
+                    title: "متجر جزارة المحبة ونظام طلب وجبات",
+                    desc: "تصميم جذاب لمتجر المنتجات الغذائية واللحوم الطازجة البلدية مع حاسبة كميات وتوصيل فوري، مدمج كلياً بنظام إرسال وتوجيه للطلبات.",
+                    imageName: "image_47aebc_2.jpg",
+                    tag: "HTML5 / Javascript"
+                },
+                {
+                    id: "7",
+                    title: "استوديو تصميم وبرمجة Blueprint Web",
+                    desc: "بيئة عمل افتراضية ثلاثية الأبعاد تمثل استوديو Blueprint لتصميم وبرمجة المواقع والمنصات الذكية بأعلى التقنيات العالمية.",
+                    imageName: "Gemini_Generated_Image_bpk2n3bpk2n3bpk2.png",
+                    tag: "Three.js / WebGL / Canvas"
+                },
+                {
+                    id: "8",
+                    title: "الهوية الرقمية لـ Blueprint Web",
+                    desc: "تصميم واجهة مستخدم مستقبلية متكاملة تقدم رؤية بصرية مذهلة وحلول برمجية مبتكرة تتناسب مع تطلعات عملائنا ومشاريعنا الفريدة.",
+                    imageName: "image_480c52.jpg",
+                    tag: "UI/UX / Branding"
+                }
+            ]
+        };
+
+        // متغير سحابي مؤقت لحفظ سلسلة الصورة المضغوطة المرفوعة
+        let uploadedImageBase64 = "";
+
+        // مستمع ومراقب لرفع ومعالجة صورة المشروع ذكياً
+        document.addEventListener('change', function(e) {
+            if (e.target && e.target.id === 'newProjImage') {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const img = new Image();
+                        img.onload = function() {
+                            // ضغط الصورة تلقائياً لضمان حفظها ومزامنتها سحابياً بسرعة وسلاسة
+                            const canvas = document.createElement('canvas');
+                            let width = img.width;
+                            let height = img.height;
+                            const max_size = 1024; // الحد الأقصى للأبعاد لعدم استهلاك باقة الإنترنت
+                            
+                            if (width > height) {
+                                if (width > max_size) {
+                                    height *= max_size / width;
+                                    width = max_size;
+                                }
+                            } else {
+                                if (height > max_size) {
+                                    width *= max_size / height;
+                                    height = max_size;
+                                }
+                            }
+                            
+                            canvas.width = width;
+                            canvas.height = height;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0, width, height);
+                            uploadedImageBase64 = canvas.toDataURL('image/jpeg', 0.7); // ضغط بجودة 70% للحفاظ على السرعة
+                        };
+                        img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+
+        // محاولة تحميل البيانات من الذاكرة المحلية أولاً لمنع الفراغ أو الـ Freeze
+        const localSavedConfig = localStorage.getItem('blueprint_site_config');
+        if (localSavedConfig) {
+            try {
+                window.siteConfig = { ...window.siteConfig, ...JSON.parse(localSavedConfig) };
+            } catch(e) {
+                console.error("Local config parse error", e);
+            }
+        }
+
+        // دالة عرض التنبيهات المخصصة والآمنة للـ iFrame
+        window.showToast = function(message, type = 'success') {
+            const toast = document.getElementById('customToast');
+            const icon = document.getElementById('toastIcon');
+            const msg = document.getElementById('toastMessage');
+
+            toast.className = 'custom-toast';
+            toast.classList.add(type);
+            
+            if (type === 'success') {
+                icon.className = 'fa-solid fa-circle-check';
+                icon.style.color = 'var(--neon-green)';
+            } else {
+                icon.className = 'fa-solid fa-circle-exclamation';
+                icon.style.color = '#ef4444';
+            }
+
+            msg.innerText = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        };
+
+        // فحص وجود إعدادات Firebase وتجنب تجميد الشاشة في حال غيابها
+        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+            try {
+                firebaseConfig = JSON.parse(__firebase_config);
+                const app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+                window.firebaseDb = db;
+                window.firebaseFirestore = { collection, addDoc, doc, setDoc, onSnapshot, updateDoc, deleteDoc };
+            } catch(err) {
+                console.error("Firebase Initialization Failed. Fallback mode is active.", err);
+            }
+        } else {
+            console.warn("No Firebase Config found. App is running in Local Fallback Database mode.");
+        }
+
+        // المصادقة والبدء الفعلي
+        const startApp = async () => {
+            if (auth) {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        const cred = await signInWithCustomToken(auth, __initial_auth_token);
+                        currentUser = cred.user;
+                    } else {
+                        const cred = await signInAnonymously(auth);
+                        currentUser = cred.user;
+                    }
+                    window.firebaseUser = currentUser;
+                    listenToWebsiteConfig();
+                    listenToBookings();
+                } catch(err) {
+                    console.error("Auth failed, loading via local cache.", err);
+                    applyConfigToUI();
+                    loadLocalBookings();
+                }
+            } else {
+                // وضع المزامنة والتشغيل المحلي
+                applyConfigToUI();
+                loadLocalBookings();
+            }
+        };
+
+        // بدء التشغيل
+        startApp();
+
+        // التنصت المباشر على الإعدادات السحابية
+        function listenToWebsiteConfig() {
+            if (!db) return;
+            const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'website_config');
+            
+            onSnapshot(docRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    const cloudData = docSnap.data();
+                    if (cloudData) {
+                        window.siteConfig = { ...window.siteConfig, ...cloudData };
+                        localStorage.setItem('blueprint_site_config', JSON.stringify(window.siteConfig));
+                        applyConfigToUI();
+                    }
+                } else {
+                    // تهيئة الإعدادات الأولى في السحابة
+                    setDoc(docRef, window.siteConfig).catch(e => console.error("Initialize cloud settings failed", e));
+                    applyConfigToUI();
+                }
+            }, (error) => {
+                console.warn("Unable to sync from cloud, local fallback is used.", error);
+                applyConfigToUI();
+            });
+        }
+
+        // تطبيق الإعدادات المجلوبة على الواجهة وتجديد قائمة المشاريع
+        function applyConfigToUI() {
+            document.getElementById('hero-ar-text').innerHTML = window.siteConfig.heroArText;
+            document.getElementById('hero-en-title').innerText = window.siteConfig.heroEnTitle;
+            document.getElementById('hero-en-text').innerText = window.siteConfig.heroEnText;
+
+            document.getElementById('dev-m1').innerHTML = `<i class="fa-solid fa-terminal"></i> ${window.siteConfig.dev1Name}`;
+            document.getElementById('dev-m2').innerHTML = `<i class="fa-solid fa-layer-group"></i> ${window.siteConfig.dev2Name}`;
+            document.getElementById('phone-number-val').innerText = window.siteConfig.whatsappNumber;
+            document.getElementById('footer-devs-text').innerText = `شراكة برمجية بين: ${window.siteConfig.dev1Name.split('|')[0]} & ${window.siteConfig.dev2Name.split('|')[0]}`;
+
+            // تفعيل أو تعطيل حقل الميزانية بالواجهة
+            const budgetGroup = document.getElementById('budget-input-group');
+            if (window.siteConfig.priceFieldEnabled) {
+                budgetGroup.style.display = 'block';
+            } else {
+                budgetGroup.style.display = 'none';
+            }
+
+            // تحديث مدخلات لوحة التحكم لمطابقة القيم السحابية
+            document.getElementById('editArText').value = window.siteConfig.heroArText;
+            document.getElementById('editEnTitle').value = window.siteConfig.heroEnTitle;
+            document.getElementById('editEnText').value = window.siteConfig.heroEnText;
+
+            document.getElementById('editDev1Name').value = window.siteConfig.dev1Name;
+            document.getElementById('editDev2Name').value = window.siteConfig.dev2Name;
+            document.getElementById('editWhatsappNum').value = window.siteConfig.whatsappNumber;
+
+            document.getElementById('editAdminUser').value = window.siteConfig.adminUser;
+            document.getElementById('editAdminPass').value = window.siteConfig.adminPass;
+
+            document.getElementById('price-field-toggle').checked = window.siteConfig.priceFieldEnabled;
+
+            // توليد وعرض المشاريع في الموقع
+            renderPortfolioProjects();
+        }
+
+        // توليد وعرض المشاريع في قسم الأعمال مع الخلفية البديلة لحل مشكلة المربوات البيضاء
+        function renderPortfolioProjects() {
+            const container = document.getElementById('portfolio-projects-container');
+            const adminProjBody = document.getElementById('projects-table-body');
+            const badgeCount = document.getElementById('project-badge-count');
+            
+            container.innerHTML = '';
+            adminProjBody.innerHTML = '';
+
+            const projects = window.siteConfig.projects || [];
+            badgeCount.innerText = projects.length;
+
+            projects.forEach((proj, index) => {
+                // 1. عرض المشروع للزائر في المعرض بتوقيع تادرس وتوماس معاً
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.innerHTML = `
+                    <div class="project-img-wrapper">
+                        <!-- تحميل الصورة محلياً، مع الحفاظ على الخلفية البديلة إذا لم تكن موجودة -->
+                        <img src="${proj.imageName}" alt="${proj.title}" onerror="this.style.opacity='0';">
+                    </div>
+                    <div class="project-info">
+                        <h3>${proj.title}</h3>
+                        <p>${proj.desc}</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid var(--glass-border); padding-top: 15px;">
+                            <span style="color: var(--neon-blue); font-weight: 700; font-size: 14px;"><i class="fa-solid fa-user-gear"></i> م. تادرس ياسر & م. توماس جمال</span>
+                            <span class="tag" style="margin: 0;"><i class="fa-solid fa-code"></i> ${proj.tag || 'Web App'}</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+
+                // 2. عرض المشروع في جدول الإدارة للتعديل أو الحذف (معالجة عدم تمدد النصوص الطويلة للصور المرفوعة)
+                const isUploaded = proj.imageName.startsWith('data:');
+                const displayImageName = isUploaded ? 'صورة محملة من الجهاز' : proj.imageName;
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td style="font-weight:700; color:var(--text-main);">${proj.title}</td>
+                    <td style="direction:ltr; text-align:right; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${displayImageName}</td>
+                    <td><span style="background:rgba(0, 240, 255, 0.08); color:var(--neon-blue); padding:4px 8px; border-radius:6px; font-size:12px; font-weight:600;">${proj.tag || 'Web App'}</span></td>
+                    <td>
+                        <button onclick="window.deleteProjectByIndex(${index})" class="action-btn delete" title="حذف المشروع نهائياً">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </td>
+                `;
+                adminProjBody.appendChild(row);
+            });
+
+            if (projects.length === 0) {
+                adminProjBody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:20px; color:var(--text-muted);">لا توجد مشاريع مضافة حالياً.</td></tr>`;
+                container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-regular fa-folder-open" style="font-size:32px; margin-bottom:10px; display:block;"></i> لا توجد مشاريع مضافة. يمكنك إضافة مشاريعك الخاصة من لوحة الإدارة.</div>`;
+            }
+        }
+
+        // تحميل وعرض الحجوزات من السحابة أو الذاكرة الاحتياطية
+        function listenToBookings() {
+            if (!db) return;
+            const bookingsCollection = collection(db, 'artifacts', appId, 'public', 'data', 'bookings');
+            
+            onSnapshot(bookingsCollection, (snapshot) => {
+                const docList = [];
+                snapshot.forEach((doc) => {
+                    docList.push({ id: doc.id, ...doc.data() });
+                });
+                renderBookingsTable(docList);
+            }, (error) => {
+                console.warn("Firestore listener failed. Loading bookings from local storage.", error);
+                loadLocalBookings();
+            });
+        }
+
+        // تحميل الحجوزات المحلية كخيار طوارئ
+        window.loadLocalBookings = function() {
+            const bookings = JSON.parse(localStorage.getItem('blueprint_bookings') || '[]');
+            renderBookingsTable(bookings);
+        };
+
+        function renderBookingsTable(bookingsList) {
+            const tableBody = document.getElementById('bookings-table-body');
+            const badgeCount = document.getElementById('booking-badge-count');
+            tableBody.innerHTML = '';
+
+            // ترتيب من الأحدث للأقدم
+            bookingsList.sort((a, b) => {
+                const dateA = a.timestamp ? new Date(a.timestamp) : new Date(0);
+                const dateB = b.timestamp ? new Date(b.timestamp) : new Date(0);
+                return dateB - dateA;
+            });
+
+            badgeCount.innerText = bookingsList.length;
+
+            bookingsList.forEach((booking) => {
+                const row = document.createElement('tr');
+                const responseMsg = `مرحباً أستاذ ${booking.name}، لقد تلقينا حجزك لتنفيذ مشروع: ${booking.type} عبر موقع Blueprint Web. نحن مستعدون للبدء بالاتفاق على الخطوات الأولى.`;
+                const replyWaLink = `https://wa.me/${booking.phone?.replace(/[^0-9]/g, '') || '201229978205'}?text=${encodeURIComponent(responseMsg)}`;
+
+                row.innerHTML = `
+                    <td style="font-weight:700; color:var(--text-main);">${booking.name || 'بدون اسم'}</td>
+                    <td style="direction:ltr; text-align:right;">${booking.phone || 'غير مسجل'}</td>
+                    <td><span style="background:rgba(0, 240, 255, 0.08); color:var(--neon-blue); padding:4px 8px; border-radius:6px; font-size:12px; font-weight:600;">${booking.type}</span></td>
+                    <td><span style="color:var(--neon-green); font-weight:700;">${booking.budget && booking.budget !== 'غير مفعل' && booking.budget !== 'غير نشط' ? booking.budget + ' ج.م' : 'غير متوفر'}</span></td>
+                    <td style="max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${booking.details || ''}">${booking.details || 'لا توجد ملاحظات'}</td>
+                    <td>
+                        <div style="display:flex; gap:12px;">
+                            <a href="${replyWaLink}" target="_blank" class="action-btn whatsapp" title="مراسلة عبر واتساب">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                            </a>
+                            <button onclick="window.deleteBookingItem('${booking.id}')" class="action-btn delete" title="حذف الحجز نهائياً">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            if (bookingsList.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:30px; color:var(--text-muted);"><i class="fa-regular fa-folder-open" style="font-size:24px; margin-bottom:10px; display:block;"></i> لا توجد حجوزات مستلمة بعد.</td></tr>`;
+            }
+        }
+
+        // دالة إرسال الحجز وحفظه الفوري في السحابة ومحلياً والتحويل الفوري للواتساب بدون تعطل الشاشة
+        window.handleFormSubmission = async function(e) {
+            if (e) e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري الحفظ سحابياً والتحويل...';
+            }
+
+            const name = document.getElementById('clientName').value.trim();
+            const phone = document.getElementById('clientPhone').value.trim();
+            const type = document.getElementById('projectType').value;
+            const details = document.getElementById('projectDetails').value.trim();
+            const budgetInput = document.getElementById('clientBudget');
+            const budget = window.siteConfig.priceFieldEnabled && budgetInput ? budgetInput.value.trim() : 'غير نشط';
+
+            const bookingData = {
+                id: Date.now().toString(),
+                name,
+                phone,
+                type,
+                budget: budget || 'لم يحدد',
+                details: details || 'لا يوجد تفاصيل إضافية',
+                timestamp: new Date().toISOString()
+            };
+
+            // 1. الحفظ الاحتياطي الفوري محلياً لمنع فقد الطلبات وضمان السرعة
+            let localBookings = JSON.parse(localStorage.getItem('blueprint_bookings') || '[]');
+            localBookings.unshift(bookingData);
+            localStorage.setItem('blueprint_bookings', JSON.stringify(localBookings));
+
+            // 2. محاولة الحفظ السحابي
+            if (db) {
+                try {
+                    const bookingsCollection = collection(db, 'artifacts', appId, 'public', 'data', 'bookings');
+                    await addDoc(bookingsCollection, bookingData);
+                } catch(err) {
+                    console.error("Firestore Save Failed, saved locally instead.", err);
+                }
+            }
+
+            // تجهيز رسالة الواتساب الاحترافية للتحويل المباشر
+            const budgetMsg = budget && budget !== 'غير نشط' ? `💰 *الميزانية المناسبة للعميل:* ${budget} جنيه\n` : '';
+            const msg = `مرحباً مهندس تادرس / مهندس توماس، أريد حجز طلب لتصميم موقع من *Blueprint Web*:\n\n` +
+                        `👤 *اسم العميل/الجهة:* ${name}\n` +
+                        `📞 *هاتف الاتصال:* ${phone}\n` +
+                        `✨ *نوع الموقع المطلوب:* ${type}\n` +
+                        budgetMsg +
+                        `📝 *أفكار ومزايا مطلوبة:* ${details ? details : 'لا يوجد شروط إضافية'}`;
+
+            const targetWhatsappNum = window.siteConfig.whatsappNumber || "201229978205";
+            const whatsappUrl = `https://wa.me/${targetWhatsappNum}?text=${encodeURIComponent(msg)}`;
+
+            // إشهار التنبيه والتحويل الفوري والسلس للواتساب
+            window.showToast("تم حفظ طلبك سحابياً وبنجاح! جاري تحويلك للواتساب للتأكيد... 🚀", "success");
+            
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fa-brands fa-whatsapp" style="font-size: 22px;"></i> تأكيد الطلب والانتقال الفوري للواتساب';
+                }
+                document.getElementById('bookingForm').reset();
+                window.loadLocalBookings();
+            }, 1200);
+        };
+
+        // دالة حفظ نصوص الواجهة
+        window.saveMainContentEdits = async function() {
+            window.siteConfig.heroArText = document.getElementById('editArText').value;
+            window.siteConfig.heroEnTitle = document.getElementById('editEnTitle').value;
+            window.siteConfig.heroEnText = document.getElementById('editEnText').value;
+
+            localStorage.setItem('blueprint_site_config', JSON.stringify(window.siteConfig));
+
+            if (db) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'website_config');
+                    await setDoc(docRef, window.siteConfig);
+                } catch(e) {
+                    console.error("Cloud save failed", e);
+                }
+            }
+            applyConfigToUI();
+            window.showToast("تم تحديث نصوص الموقع السحابية فوراً وبنجاح! 🚀");
+            closeAdminModal();
+        };
+
+        // دالة حفظ بيانات المطورين وهاتف استقبال الرسائل
+        window.saveDevsConfigCloud = async function() {
+            window.siteConfig.dev1Name = document.getElementById('editDev1Name').value;
+            window.siteConfig.dev2Name = document.getElementById('editDev2Name').value;
+            window.siteConfig.whatsappNumber = document.getElementById('editWhatsappNum').value;
+
+            localStorage.setItem('blueprint_site_config', JSON.stringify(window.siteConfig));
+
+            if (db) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'website_config');
+                    await setDoc(docRef, window.siteConfig);
+                } catch(e) {
+                    console.error("Cloud save failed", e);
+                }
+            }
+            applyConfigToUI();
+            window.showToast("تم مزامنة بيانات المطورين وأرقام الاتصال سحابياً! 🌐");
+            closeAdminModal();
+        };
+
+        // دالة حفظ بيانات الأمان وكلمة السر سحابياً ومحلياً
+        window.saveAdminCredentialsCloud = async function() {
+            window.siteConfig.adminUser = document.getElementById('editAdminUser').value.trim();
+            window.siteConfig.adminPass = document.getElementById('editAdminPass').value.trim();
+
+            localStorage.setItem('blueprint_site_config', JSON.stringify(window.siteConfig));
+
+            if (db) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'website_config');
+                    await setDoc(docRef, window.siteConfig);
+                } catch(e) {
+                    console.error("Cloud save failed", e);
+                }
+            }
+            applyConfigToUI();
+            window.showToast("تم تحديث بيانات الدخول للوحة التحكم السحابية بأمان! 🔒");
+            closeAdminModal();
+        };
+
+        // تفعيل / إيقاف حقل الأسعار سحابياً ومحلياً
+        window.togglePriceFieldCloud = async function() {
+            const isChecked = document.getElementById('price-field-toggle').checked;
+            window.siteConfig.priceFieldEnabled = isChecked;
+
+            localStorage.setItem('blueprint_site_config', JSON.stringify(window.siteConfig));
+
+            if (db) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'website_config');
+                    await setDoc(docRef, window.siteConfig);
+                } catch(e) {
+                    console.error("Cloud price toggle failed", e);
+                }
+            }
+            applyConfigToUI();
+            window.showToast(isChecked ? "تم تفعيل حقل الميزانية بنجاح! 🟢" : "تم إلغاء تفعيل حقل الميزانية! 🔴");
+        };
+
+        // دالة إضافة مشروع جديد سحابياً ومحلياً باستخدام الصورة المحملة
+        window.addNewProjectCloud = async function() {
+            const title = document.getElementById('newProjTitle').value.trim();
+            const desc = document.getElementById('newProjDesc').value.trim();
+            const tag = document.getElementById('newProjTag').value.trim();
+
+            if (!title || !desc) {
+                window.showToast("يرجى ملء كافة تفاصيل المشروع أولاً!", "error");
+                return;
+            }
+
+            if (!uploadedImageBase64) {
+                window.showToast("يرجى اختيار صورة للمشروع من جهازك أولاً ليتم رفعها ومزامنتها!", "error");
+                return;
+            }
+
+            const newProject = {
+                id: Date.now().toString(),
+                title,
+                desc,
+                imageName: uploadedImageBase64, // يتم حفظ الصورة بنظام Base64 ومزامنتها سحابياً ومحلياً
+                tag: tag || 'Blueprint'
+            };
+
+            if (!window.siteConfig.projects) {
+                window.siteConfig.projects = [];
+            }
+
+            window.siteConfig.projects.push(newProject);
+            localStorage.setItem('blueprint_site_config', JSON.stringify(window.siteConfig));
+
+            if (db) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'website_config');
+                    await setDoc(docRef, window.siteConfig);
+                } catch(e) {
+                    console.error("Cloud add project failed", e);
+                }
+            }
+
+            // تنظيف الحقول وإعادة بناء المعرض
+            document.getElementById('newProjTitle').value = '';
+            document.getElementById('newProjDesc').value = '';
+            document.getElementById('newProjImage').value = ''; // تصفير حقل الملفات المرفوعة
+            document.getElementById('newProjTag').value = '';
+            uploadedImageBase64 = ""; // تصفير مخزن الصورة المؤقت
+
+            applyConfigToUI();
+            window.showToast("تم رفع الصورة وإضافة المشروع الجديد ومزامنتها سحابياً بنجاح! 🚀");
+        };
+
+        // دالة حذف المشروع حسب الترتيب
+        window.deleteProjectByIndex = async function(index) {
+            window.siteConfig.projects.splice(index, 1);
+            localStorage.setItem('blueprint_site_config', JSON.stringify(window.siteConfig));
+
+            if (db) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'website_config');
+                    await setDoc(docRef, window.siteConfig);
+                } catch(e) {
+                    console.error("Cloud delete project failed", e);
+                }
+            }
+
+            applyConfigToUI();
+            window.showToast("تم إزالة المشروع وتحديث المعرض بنجاح. ☑️");
+        };
+
+        // دالة حذف حجز
+        window.deleteBookingItem = async function(id) {
+            // حذف محلياً
+            let localBookings = JSON.parse(localStorage.getItem('blueprint_bookings') || '[]');
+            localBookings = localBookings.filter(b => b.id !== id);
+            localStorage.setItem('blueprint_bookings', JSON.stringify(localBookings));
+
+            // حذف سحابياً
+            if (db) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'bookings', id);
+                    await deleteDoc(docRef);
+                } catch(err) {
+                    console.error("Cloud delete booking failed", err);
+                }
+            }
+
+            window.showToast("تم حذف الحجز بنجاح وتحديث اللوحة. ☑️");
+            window.loadLocalBookings();
+        };
+
+    </script>
+
+    <!-- كود التحقق من تسجيل الدخول والتنقل الخاص بنافذة المطورين وعرضها -->
+    <script>
+        // دالة تحويل الثيم من المظلم للمضيء والعكس
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.className = 'fa-solid fa-moon';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.className = 'fa-solid fa-sun';
+            }
+        }
+
+        function openAdminModal() { 
+            document.getElementById('adminModal').style.display = 'flex'; 
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeAdminModal() { 
+            document.getElementById('adminModal').style.display = 'none'; 
+            document.body.style.overflow = 'auto';
+        }
+
+        // تسجيل الدخول الآمن للوحة التحكم والتحكم السحابي للمطورين
+        function handleLogin() {
+            const u = document.getElementById('adminUser').value.trim();
+            const p = document.getElementById('adminPass').value.trim();
+
+            const requiredUser = window.siteConfig?.adminUser || "blueprint_admin";
+            const requiredPass = window.siteConfig?.adminPass || "web_2026_secured";
+
+            if (u === requiredUser && p === requiredPass) {
+                document.getElementById('login-view').style.display = 'none';
+                document.getElementById('dashboard-view').style.display = 'grid';
+                
+                if (typeof window.showToast === 'function') {
+                    window.showToast("مرحباً بعودتك مجدداً م. تادرس & م. توماس! تم الاتصال بالبوابة بنجاح.");
+                }
+            } else {
+                if (typeof window.showToast === 'function') {
+                    window.showToast("اسم الإدارة أو كلمة المرور غير صحيحة!", "error");
+                }
+            }
+        }
+
+        // التبديل بين التبويبات في لوحة المطورين
+        function switchDashboardTab(tabId) {
+            // إلغاء تفعيل كافة التبويبات والأزرار الجانبية
+            document.querySelectorAll('.dashboard-tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
+
+            // تفعيل التبويب المطلوب والزر المقابل له
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // تسجيل الخروج بأمان من لوحة المطورين
+        function handleLogout() {
+            document.getElementById('adminUser').value = '';
+            document.getElementById('adminPass').value = '';
+            document.getElementById('dashboard-view').style.display = 'none';
+            document.getElementById('login-view').style.display = 'block';
+            
+            // إعادة التبويبات الافتراضية
+            document.querySelectorAll('.dashboard-tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('tab-bookings').classList.add('active');
+            document.querySelector('.dashboard-sidebar .sidebar-btn').classList.add('active');
+
+            closeAdminModal();
+            if (typeof window.showToast === 'function') {
+                window.showToast("تم تسجيل الخروج وإغلاق بوابة الإدارة بنجاح.");
+            }
+        }
+    </script>
+</body>
+</html>
